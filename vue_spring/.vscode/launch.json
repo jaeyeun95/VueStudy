@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PageableTestApplication<pageableTest>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "me.kzv.pageabletest.PageableTestApplication",
+            "projectName": "pageableTest",
+            "args": ""
+        }
+    ]
+}

@@ -39,7 +39,7 @@ import Alert from "@/components/common/modal/Alert.vue";
 </transition>	
 
 6. alert를 띄울 메서드 안에서
-this.$store.commit("alertToggle", {
-    isAlert: true,
-    text: "<h1>모델변경</h1> 성공 <br> 부가설명",
-});
+	this.$store.commit("alertToggle", {
+              isAlert: true,
+              text: "<h1>모델변경</h1> 성공 <br> 부가설명",
+            });

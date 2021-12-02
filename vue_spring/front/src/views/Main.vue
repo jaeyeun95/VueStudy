@@ -19,7 +19,8 @@
 		</transition>	
 		<Pagination :pageable="pageable" @goPage="goPage" />
 
-		<button @click="testAlert">alert 테스트</button>
+		<button @click="testAlert">alert 테스트</button> <br>
+		<button @click="testAPI">axiosAPI</button>
 	</div>
 </template>
 
@@ -61,6 +62,34 @@ export default {
 			this.pageable.last = data.last;
 			console.log(this.pageable);
 		},
+		testAPI(){
+			console.log('testAPI')
+
+			// this.$axios.fetch('https://jsonplaceholder.typicode.com/posts',{
+			// 	method : 'POST',
+			// 	body: JSON.stringify({
+			// 		title : 'foo',
+			// 		body:'bar',
+			// 		userId : 1,
+			// 	}),
+			// 	headers:{
+			// 		'Content-type':'application/json; charset=UTF-8'
+			// 	}
+			// })
+			// .then(res => console.log(res.json()))
+			// .then(json => console.log(json))
+			// .catch(err => console.log(err))
+
+			this.$axios.post('https://jsonplaceholder.typicode.com/posts',{
+					title : 'foo',
+					body:'bar',
+					userId : 1
+			})
+			.then(res => console.log(res))
+			.catch(err => console.log(err))
+
+		},
+		// alert
 		testAlert(){
 			this.$store.commit("alertToggle", {
               isAlert: true,

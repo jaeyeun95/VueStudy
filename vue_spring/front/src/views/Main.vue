@@ -14,18 +14,25 @@
 				<td>{{ item.regDate }}</td>
 			</tr>
 		</table>
+		<transition name="fade">
+			<Alert v-if="$store.state.alertData.isAlert" />
+		</transition>	
 		<Pagination :pageable="pageable" @goPage="goPage" />
+
+		<button @click="testAlert">alert 테스트</button>
 	</div>
 </template>
 
 <script>
 import { getList } from '../api';
+import Alert from '@/components/Alert.vue';
 
 import Pagination from '@/components/Pagination.vue';
 
 export default {
 	components: {
 		Pagination,
+		Alert,
 	},
 	data() {
 		return {
@@ -54,6 +61,12 @@ export default {
 			this.pageable.last = data.last;
 			console.log(this.pageable);
 		},
+		testAlert(){
+			this.$store.commit("alertToggle", {
+              isAlert: true,
+              text: "<h1>모델변경</h1> 성공 <br> 부가설명",
+            });
+		}
 	},
 };
 </script>

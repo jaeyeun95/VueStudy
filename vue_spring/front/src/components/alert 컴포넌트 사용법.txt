@@ -1,0 +1,45 @@
+Alert 창 샘플
+
+0. Alert 컴포넌트 추가
+
+1. App.vue <style> 에 alert transition style 추가
+
+<style>
+/* transition style */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+</style>
+
+2. vuex store/index.js  state 에 alertData 추가
+    alertData: {
+      isAlert: false,	// on,off 
+      text: '',	// alert 메시지
+    },
+
+3. vuex store/index.js mutations function 추가
+    alertToggle(state, alertData) {
+      state.alertData.isAlert = alertData.isAlert;
+      if (alertData.text) state.alertData.text = alertData.text;
+    },
+
+4. alert를 사용하고자 하는 페이지에서 component 등록
+import Alert from "@/components/common/modal/Alert.vue";
+
+5. 사용하고자 하는 페이지에서 추가
+<transition name="fade">
+    <Alert v-if="$store.state.alertData.isAlert" />
+</transition>	
+
+6. alert를 띄울 메서드 안에서
+this.$store.commit("alertToggle", {
+    isAlert: true,
+    text: "<h1>모델변경</h1> 성공 <br> 부가설명",
+});

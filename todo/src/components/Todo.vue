@@ -10,7 +10,7 @@ export default {
     props:['label'],
     methods:{
         clickButton(){
-            this.$emit('componentClick');
+            this.$emit('componentClick'); 
         }
     }
 }

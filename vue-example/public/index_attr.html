@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </head>
+  <style>
+      .dropdown ul{
+          display : none;
+          list-style: none;
+          margin : 0;
+          border : 1px solid black;
+          padding : 10px;
+          width : 200px;
+      }
+
+      .dropdown.on ul{
+          display: block;
+      }
+  </style>
+  <body>
+    <div id="app">
+        <!-- <div :style="[style, fontStyle]">
+            테스트용 DIV
+        </div> -->
+        <button @click="btnClick">버튼 클릭하기</button>
+        <div :class="[dropdown, toggle]">
+            <ul>
+                <li><a href="#">메뉴1</a></li>
+                <li><a href="#">메뉴2</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      let app = new Vue({ // vue 인스턴스
+        el: '#app',
+        data(){
+          return{
+              id: 1,
+              image:'https://picsum.photos/200/200?image=353',
+              style: {
+                  background : 'red',
+                  // 'font-size':'10px',   // 속성에 -가 들어있으면 ' ' 로 감싸주고
+                  // fontFamily: 'dotum'   // -를 사용하지 않는다면 - 대신 대문자로 오게 설정한다
+              },
+              fontStyle :{
+                  fontSize : '10px',
+                  fontFamily : 'dotum'
+              },
+              dropdown : 'dropdown',
+              toggle:{
+                on: false
+              }
+          };
+        },
+        methods:{
+            btnClick(){
+                this.toggle.on = !this.toggle.on;
+            }
+        },
+        
+      });
+    </script>
+
+  </body>
+</html>

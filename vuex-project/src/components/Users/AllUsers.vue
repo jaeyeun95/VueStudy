@@ -29,13 +29,13 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters({
-      count: "allUsersCount",
-      seouls: "countOfSeoul",
-      percent: "percentOfSeoul",
-    }),
+    // ...mapGetters({
+    //   count: "allUsersCount",
+    //   seouls: "countOfSeoul",
+    //   percent: "percentOfSeoul",
+    // }),
     ...mapState(["allUsers"]),
-    // ...mapGetters(["allUsersCount", "countOfSeoul", "percentOfSeoul"]),
+    ...mapGetters(["allUsersCount", "countOfSeoul", "percentOfSeoul"]),
   },
   mounted() {
     EventBus.$on("signUp", (users) => {

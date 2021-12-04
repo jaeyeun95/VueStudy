@@ -51,6 +51,17 @@ export default new Vuex.Store({
       return Math.round((getters.countOfSeoul / getters.allUsersCount) * 100);
     },
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    addUsers: (state, payload) => {
+      // payload 는 넘어온 데이터
+      state.allUsers.push(payload);
+    },
+  },
+  actions: {
+    addUsers: ({ commit }, payload) => {
+      // function({commit})  context를 간단하게 사용하기 위해
+      // context.commit('mutation 함수명')
+      commit("addUsers", payload);
+    },
+  },
 });

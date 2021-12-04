@@ -29,10 +29,18 @@
           {{ hasDogKr }}
         </v-list-tile-content>
       </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>수정일자:</v-list-tile-content>
+        <v-list-tile-content class="align-end">
+          {{ editedDate }}
+        </v-list-tile-content>
+      </v-list-tile>
     </v-list>
   </div>
 </template>
 <script>
+import { eventBus } from "../main";
+
 export default {
   props: ["name", "address", "phone", "hasDog"],
   // props: {
@@ -42,9 +50,16 @@ export default {
   //     default: "Lego", // default 값
   //   },
   // },
+  created() {
+    // eventBus.$on('userWasEdited', '콜백함수')
+    // 뷰에서 콜백함수를 사용할 때에는 arrow fucntion을 사용해줘야 한다.
+    eventBus.$on("userWasEdited", (date) => {
+      this.editedDate = date; // date = 이벤트버스로 전달된 데이터
+    });
+  },
   data() {
     return {
-      age: 30,
+      editedDate: null,
     };
   },
   computed: {

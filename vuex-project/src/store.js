@@ -39,6 +39,17 @@ export default new Vuex.Store({
     // allUsersCount: state => {
     //   return state.allUsers.length;
     // }
+    countOfSeoul: (state) => {
+      let count = 0;
+      state.allUsers.forEach((user) => {
+        if (user.address === "Seoul") count++;
+      });
+      return count;
+    },
+    percentOfSeoul: (state, getters) => {
+      // 2개 이상 사용시에는 괄호가 필수
+      return Math.round((getters.countOfSeoul / getters.allUsersCount) * 100);
+    },
   },
   mutations: {},
   actions: {},

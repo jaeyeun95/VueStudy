@@ -32,7 +32,7 @@
       <v-list-tile>
         <v-list-tile-content>수정일자:</v-list-tile-content>
         <v-list-tile-content class="align-end">
-          {{ editedDate }}
+          {{ getDateAndTime(editedDate) }}
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -40,8 +40,10 @@
 </template>
 <script>
 import { eventBus } from "../main";
+import { dateFormat } from "../mixins/dateFormat";
 
 export default {
+  mixins: [dateFormat],
   props: ["name", "address", "phone", "hasDog"],
   // props: {
   //   name: {

@@ -2,6 +2,8 @@
   <div class="blue lighten-3 pa-3">
     <h1>User 컴포넌트</h1>
     <p>이름: {{ name }}</p>
+    <p>{{ getDateAndTime(createdAt) }}</p>
+    <p>{{ helloToMixin }}</p>
     <v-btn @click="changeName()">이름 변경</v-btn>
     <hr />
     <v-layout row wrap>
@@ -30,6 +32,7 @@
 <script>
 import UserDetail from "./UserDetail.vue";
 import UserEdit from "./UserEdit.vue";
+import { dateFormat } from "../mixins/dateFormat";
 
 export default {
   components: {
@@ -42,7 +45,16 @@ export default {
       address: "Seoul",
       phone: "1234-5678",
       hasDog: true,
+      createdAt: null,
     };
+  },
+  created() {
+    this.createdAt = new Date();
+  },
+  computed: {
+    helloToMixin() {
+      return this.mixinData + " 안녕하시오!";
+    },
   },
   methods: {
     changeName() {
@@ -56,5 +68,6 @@ export default {
       console.log("부모가 받았어!", data);
     },
   },
+  mixins: [dateFormat],
 };
 </script>

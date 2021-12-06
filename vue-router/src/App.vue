@@ -2,6 +2,7 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" fixed app>
       <v-list dense>
+        <h1>hi</h1>
         <v-list-tile router :to="{ name: 'home' }" exact>
           <v-list-tile-action>
             <i class="fas fa-home"></i>

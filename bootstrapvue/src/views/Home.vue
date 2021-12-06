@@ -4,16 +4,12 @@
     <LoginPage></LoginPage>
     <button @click="test()">alert</button>
     <Alert v-if="$store.state.alertData.isAlert" />
-    <h3>회원가입 폼</h3>
-    <SignIn />
-
     <Pagination />
   </div>
 </template>
 
 <script>
-import LoginPage from "@/components/users/Login.vue";
-import SignIn from "@/components/users/SignIn.vue";
+import LoginPage from "@/components/Login.vue";
 import Pagination from "@/components/pagination/Pagination.vue";
 // @ is an alias to /src
 
@@ -21,7 +17,6 @@ export default {
   name: "Home",
   components: {
     LoginPage,
-    SignIn,
     Pagination,
   },
   methods: {
@@ -36,6 +31,7 @@ export default {
 </script>
 <style scoped>
 button {
+  /* background: red; */
   align-content: center;
   margin-left: 40%;
 }

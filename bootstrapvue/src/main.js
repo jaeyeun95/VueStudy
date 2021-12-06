@@ -9,8 +9,10 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 // 전역 컴포넌트
 import Alert from "@/components/alert/Alert";
+import Pagination from "@/components/pagination/Pagination";
 
 Vue.component("Alert", Alert);
+Vue.component("Pagination", Pagination);
 
 Vue.use(BootstrapVue);
 

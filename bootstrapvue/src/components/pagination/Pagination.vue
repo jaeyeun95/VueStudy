@@ -8,7 +8,7 @@
     ></b-pagination>
   </div> -->
   <div class="mt-3">
-    <h6 class="text-center">Center alignment</h6>
+    <h6 class="text-center">Paging</h6>
     <b-pagination v-model="currentPage" align="center"></b-pagination>
     <!-- :total-rows="rows" -->
   </div>

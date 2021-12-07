@@ -11,11 +11,14 @@
       <b-table striped hover :items="items" :fields="fields"></b-table>
       <!-- 페이징 -->
       <Pagination />
-      <b-button @click="writeContent">글쓰기</b-button>
+      <b-button @click="writeBoard()">글쓰기</b-button>
+      <BoardModal v-if="detail" @closeModal="closeModal" />
+      <div class="modal_back_shadow"></div>
     </div>
   </div>
 </template>
 <script>
+import BoardModal from "@/views/modal/BoardModal.vue";
 export default {
   data() {
     return {
@@ -143,11 +146,24 @@ export default {
           updated_at: null,
         },
       ],
+      detail: false,
     };
   },
+  components: {
+    BoardModal,
+  },
   methods: {
-    writeContent() {
+    // 글쓰기 모달창 열기
+    writeBoard() {
       console.log("글쓰기 폼으로");
+      this.detail = true;
+      this.$el.querySelector(".modal_back_shadow").style =
+        "background-color: rgb(0, 0, 0); position: fixed; inset: 0px; opacity: 0.7; z-index: 9996;";
+    },
+    // 글쓰기 모달창 닫기
+    closeModal() {
+      this.detail = false;
+      this.$el.querySelector(".modal_back_shadow").style = "";
     },
   },
 };

@@ -18,6 +18,9 @@ const UsersDetail = () => {
 const UsersEdit = () => {
   return import("./views/UsersEdit.vue");
 };
+const Side = () => {
+  return import("./views/Side.vue");
+};
 
 export default new Router({
   mode: "history",
@@ -27,6 +30,11 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home,
+    },
+    {
+      path: "/side",
+      name: "side",
+      component: Side,
     },
     {
       path: "/about",

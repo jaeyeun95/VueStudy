@@ -1,5 +1,9 @@
 <template>
   <div>
+    <a href="https://www.w3schools.com/bootstrap5/bootstrap_offcanvas.php"
+      >참조</a
+    >
+    <br />
     <b-button v-b-toggle.sidebar-right>Toggle Sidebar</b-button>
     <b-sidebar
       id="sidebar-right"

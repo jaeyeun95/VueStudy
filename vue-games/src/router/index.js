@@ -25,6 +25,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/RockScissorsPapper.vue"),
   },
+  {
+    path: "/lotto",
+    name: "LottoGenerator",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/LottoGenerator.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -7,6 +7,9 @@ import BootstrapVue from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
+// 모달 css
+import "@/assets/css/contents.css";
+
 // 전역 컴포넌트
 import Alert from "@/components/alert/Alert";
 import Pagination from "@/components/pagination/Pagination";

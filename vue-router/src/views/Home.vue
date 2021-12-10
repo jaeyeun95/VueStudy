@@ -8,19 +8,29 @@
       <b-button variant="success">Button</b-button>
       <b-button variant="outline-primary">Button</b-button>
     </div>
-    <v-slide-y-transition mode="out-in">
-      <v-layout column align-center>
-        <img src="@/assets/logo.png" alt="Vuetify.js" class="mb-5" />
-        <blockquote>
-          &#8220;First, solve the problem. Then, write the code.&#8221;
-          <footer>
-            <small>
-              <em>&mdash;John Johnson</em>
-            </small>
-          </footer>
-        </blockquote>
-      </v-layout>
-    </v-slide-y-transition>
+
+    <h2>footer</h2>
+    <v-footer dark padless>
+      <v-card class="flex" flat tile>
+        <v-card-title class="teal">
+          <strong class="subheading"
+            >Get connected with us on social networks!</strong
+          >
+
+          <v-spacer></v-spacer>
+
+          <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon>
+            <v-icon size="24px">
+              {{ icon }}
+            </v-icon>
+          </v-btn>
+        </v-card-title>
+
+        <v-card-text class="py-2 white--text text-center">
+          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-container>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
   <div>
+    <a href="https://vuetifyjs.com/en/components/forms/#vee-validate"
+      >vuetify 회원가입폼</a
+    >
     <div class="container mt-3">
-      <h2>회원 가입</h2>
+      <h2>bootstrap 회원 가입</h2>
       <div class="mb-3 mt-3">
         <label for="id">ID:</label>
         <input

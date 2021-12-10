@@ -35,8 +35,9 @@ export default {
 };
 </script>
 <style scoped>
-button {
-  align-content: center;
+/* !important -> 이걸 최우선으로 */
+button { 
+  align-content: center; 
   margin-left: 40%;
 }
 </style>

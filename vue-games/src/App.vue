@@ -5,6 +5,7 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/rock">RockScissorsPapper</router-link> |
       <router-link to="/lotto">Lotto</router-link> |
+      <router-link to="/tic">Tick</router-link> |
     </div>
     <router-view />
   </div>

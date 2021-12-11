@@ -31,6 +31,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/LottoGenerator.vue"),
   },
+  {
+    path: "/tic",
+    name: "TicTacToe",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/TicTacToe.vue"),
+  },
 ];
 
 const router = new VueRouter({

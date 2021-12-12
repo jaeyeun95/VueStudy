@@ -37,6 +37,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/TicTacToe.vue"),
   },
+  {
+    path: "/mine",
+    name: "MineSweeper",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/MineSweeper.vue"),
+  },
 ];
 
 const router = new VueRouter({

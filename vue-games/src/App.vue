@@ -6,6 +6,7 @@
       <router-link to="/rock">RockScissorsPapper</router-link> |
       <router-link to="/lotto">Lotto</router-link> |
       <router-link to="/tic">Tick</router-link> |
+      <router-link to="/mine">MineSweeper</router-link> |
     </div>
     <router-view />
   </div>

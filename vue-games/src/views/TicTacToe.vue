@@ -11,14 +11,7 @@ import TableComponent from "@/components/tick/TableComponent";
 export default {
   name: "TicTacToe",
   data() {
-    return {
-      tableData: [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
-      ],
-      turn: "O",
-    };
+    return {};
   },
   components: {
     TableComponent,

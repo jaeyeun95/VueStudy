@@ -22,6 +22,7 @@ import {
   NORMALIZE_CELL,
   FLAG_CELL,
   QUESTION_CELL,
+  CLICK_MINE,
 } from "@/store/store.js";
 
 export default {
@@ -76,7 +77,9 @@ export default {
           case CODE.CLICK_MINE:
             return "펑";
           default:
-            return "";
+            return this.$store.state.tableData[row][cell] || '';
+            // 자바스크립트 논리 연산자 -> default 값을 셋팅
+            // this.$store.state.tableData 의 값이 없으면 '' 을 리턴하겠다.
         }
       };
     },
@@ -86,7 +89,14 @@ export default {
       if (this.halted) {
         return; // halted 된 경우 게임 중단
       }
-      this.$store.commit(OPEN_CELL, { row, cell });
+      switch (this.tableData[row][cell]){
+        case CODE.NORMAL:
+          return this.$store.commit(OPEN_CELL, {row, cell});
+        case CODE.MINE:
+          return this.$store.commit(CLICK_MINE, {row, cell});
+        default:
+          return;
+      }
     },
     onRightClickTd(row, cell) {
       if (this.halted) {

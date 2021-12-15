@@ -7,6 +7,9 @@
       <router-link to="/lotto">Lotto</router-link> |
       <router-link to="/tic">Tick</router-link> |
       <router-link to="/mine">MineSweeper</router-link> |
+      <router-link to="/route">routeTest</router-link> |
+      <router-link to="/game/index">GameMatcher</router-link> |
+      <router-link to="/game/hello">GameMatcher22</router-link> |
     </div>
     <router-view />
   </div>

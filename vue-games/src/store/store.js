@@ -66,7 +66,7 @@ export default new Vuex.Store({
     timer: 0,
     halted: true, // 중단된
     result: "",
-    openedCount:0,
+    openedCount: 0,
   },
   getters: {},
   mutations: {
@@ -83,65 +83,80 @@ export default new Vuex.Store({
       state.timer = 0;
       state.halted = false;
       state.openedCount = 0;
-      state.result = '';
+      state.result = "";
     },
     [OPEN_CELL](state, { row, cell }) {
       // state.tableData[row][cell] = CODE.OPENED;
       let openedCount = 0;
       const checked = [];
-      function checkAround(row, cell){ // 주변 8칸 지뢰인지 검색
-        let checkRowOrCellUndefined = row <0 || row >= state.tableData.length || cell <0 || cell >= state.tableData[0].length
-        if (checkRowOrCellUndefined){
-          return ;
-        }
-        if( [CODE.OPENED, CODE.FLAG, CODE.FLAG_MINE, CODE.QUESTION].includes(state.tableData[row][cell])){
+      function checkAround(row, cell) {
+        // 주변 8칸 지뢰인지 검색
+        let checkRowOrCellUndefined =
+          row < 0 ||
+          row >= state.tableData.length ||
+          cell < 0 ||
+          cell >= state.tableData[0].length;
+        if (checkRowOrCellUndefined) {
           return;
         }
-        if (checked.includes(row + '/' + cell)){
+        if (
+          [CODE.OPENED, CODE.FLAG, CODE.FLAG_MINE, CODE.QUESTION].includes(
+            state.tableData[row][cell]
+          )
+        ) {
+          return;
+        }
+        if (checked.includes(row + "/" + cell)) {
           return;
         } else {
-          checked.push(row + '/' + cell);
+          checked.push(row + "/" + cell);
         }
         let around = [];
-        if(state.tableData[row-1]){
+        if (state.tableData[row - 1]) {
           around = around.concat([
-            state.tableData[row -1][cell -1], state.tableData[row -1][cell], state.tableData[row -1][cell +1]
+            state.tableData[row - 1][cell - 1],
+            state.tableData[row - 1][cell],
+            state.tableData[row - 1][cell + 1],
           ]);
         }
         around = around.concat([
-          state.tableData[row][cell -1], state.tableData[row ][cell +1]
+          state.tableData[row][cell - 1],
+          state.tableData[row][cell + 1],
         ]);
-        if(state.tableData[row + 1]){
+        if (state.tableData[row + 1]) {
           around = around.concat([
-            state.tableData[row +1][cell -1],state.tableData[row ][cell +1], state.tableData[row +1 ][cell +1]
+            state.tableData[row + 1][cell - 1],
+            state.tableData[row][cell + 1],
+            state.tableData[row + 1][cell + 1],
           ]);
         }
-        const counted = around.filter( function(v){
-          console.log('v ::', v);
+        const counted = around.filter(function (v) {
+          console.log("v ::", v);
           return [CODE.MINE, CODE.FLAG_MINE, CODE.QUESTION_MINE].includes(v);
         });
         // return counted.length;
-        if (counted.length === 0 && row > -1){  // 주변에 지뢰가 하나도 없는 경우
+        if (counted.length === 0 && row > -1) {
+          // 주변에 지뢰가 하나도 없는 경우
           const near = [];
-          if(row -1 > -1){
-            near.push([row -1, cell -1]);
-            near.push([row -1, cell]);
-            near.push([row -1, cell +1]);
+          if (row - 1 > -1) {
+            near.push([row - 1, cell - 1]);
+            near.push([row - 1, cell]);
+            near.push([row - 1, cell + 1]);
           }
-          near.push([row, cell -1]);
-          near.push([row, cell +1]);
-          if( row + 1 < state.tableData.length){
-            near.push([row +1, cell -1]);
-            near.push([row +1, cell]);
-            near.push([row +1, cell +1]);
+          near.push([row, cell - 1]);
+          near.push([row, cell + 1]);
+          if (row + 1 < state.tableData.length) {
+            near.push([row + 1, cell - 1]);
+            near.push([row + 1, cell]);
+            near.push([row + 1, cell + 1]);
           }
-          near.forEach( (n) => {
-            if (state.tableData[n[0]][n[1]] !== CODE.OPENED){
+          near.forEach((n) => {
+            if (state.tableData[n[0]][n[1]] !== CODE.OPENED) {
               checkAround(n[0], n[1]);
             }
           });
         }
-        if (state.tableData[row][cell] === CODE.NORMAL){
+        if (state.tableData[row][cell] === CODE.NORMAL) {
           openedCount += 1;
         }
         Vue.set(state.tableData[row], cell, counted.length);
@@ -149,7 +164,10 @@ export default new Vuex.Store({
       checkAround(row, cell);
       let halted = false;
       let result;
-      if (state.data.row * state.data.cell - state.data.mine === state.openedCount + openedCount){
+      if (
+        state.data.row * state.data.cell - state.data.mine ===
+        state.openedCount + openedCount
+      ) {
         // 승리
         halted = true;
         result = `${state.timer}초만에 승리하셨습니다`;
@@ -158,7 +176,7 @@ export default new Vuex.Store({
       state.halted = halted;
       state.result = result;
     },
-    [CLICK_MINE](state, {row, cell} ) {
+    [CLICK_MINE](state, { row, cell }) {
       state.halted = true;
       Vue.set(state.tableData[row], cell, CODE.CLICK_MINE);
     },

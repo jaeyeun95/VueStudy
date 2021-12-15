@@ -43,10 +43,23 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/MineSweeper.vue"),
   },
+  {
+    path: "/route",
+    name: "RouterTest",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/route/Router.vue"),
+  },
+  {
+    path: "/game/:name",
+    // :name 부분이 계속 바뀐다고 생각하면된다.
+    name: "GameMatcher",
+    component: () => import("../views/route/GameMatcher.vue"),
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
+  // history 가 추가되면 url에 # 이 없어짐, 대신 새로고침하면 서버로 요청하기 때문에 페이지가 뜨지 않는다.
   base: process.env.BASE_URL,
   routes,
 });
